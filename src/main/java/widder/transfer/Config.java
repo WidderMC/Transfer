@@ -13,10 +13,6 @@ public class Config {
     private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("transfer.properties");
     private static final Properties PROPERTIES = new Properties();
 
-    public static final String commandName = getCommandName();
-    public static final String IP = getIp();
-    public static final int Port = getPort();
-
     public static void LoadConfig() {
         try {
             Files.createDirectories(FILE.getParent());
@@ -27,7 +23,7 @@ public class Config {
                 }
             }
 
-            PROPERTIES.putIfAbsent("CommandName","transfer");
+            PROPERTIES.putIfAbsent("CommandName","hub-server");
             PROPERTIES.putIfAbsent("IP","");
             PROPERTIES.putIfAbsent("Port","25565");
 
