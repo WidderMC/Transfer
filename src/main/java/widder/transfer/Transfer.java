@@ -17,9 +17,11 @@ public class Transfer implements ModInitializer {
 		Command.CommandRegister();
 
 		if (debug) {
-			LOGGER.info("commandName: " + Config.getCommandName());
-			LOGGER.info("IP: " + Config.getIp());
-			LOGGER.info("Port: " + Config.getPort());
+			for (int i = 1; i < Config.getCommandCounter()+1;) {
+				LOGGER.info(i+"-CommandName: " + Config.getCommandName(i));
+				LOGGER.info(i+"-IP: " + Config.getIp(i));
+				LOGGER.info(i+"-Port: " + Config.getPort(i));
+			}
 		}
 
 		LOGGER.info("Successful loaded Config");

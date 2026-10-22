@@ -23,9 +23,16 @@ public class Config {
                 }
             }
 
-            PROPERTIES.putIfAbsent("CommandName","hub-server");
-            PROPERTIES.putIfAbsent("IP","");
-            PROPERTIES.putIfAbsent("Port","25565");
+            PROPERTIES.putIfAbsent("CommandsCounter","1");
+            for (int i=1; i < getCommandCounter()+1;) {
+                PROPERTIES.putIfAbsent(i+"-CommandName",i+"-server");
+                PROPERTIES.putIfAbsent(i+"-IP","");
+                PROPERTIES.putIfAbsent(i+"-Port","25565");
+                if (Transfer.debug) {
+                    Transfer.LOGGER.info("CommandCounter: " + i);
+                }
+                i++;
+            }
 
             try (OutputStream out = Files.newOutputStream(FILE)) {
                 PROPERTIES.store(out, "Transfer Configs");
@@ -36,15 +43,19 @@ public class Config {
         }
     }
 
-    public static String getCommandName() {
-        return PROPERTIES.getProperty("CommandName");
+    public static int getCommandCounter() {
+        return Integer.parseInt(PROPERTIES.getProperty("CommandsCounter"));
     }
 
-    public static String getIp() {
-        return PROPERTIES.getProperty("IP");
+    public static String getCommandName(int i) {
+        return PROPERTIES.getProperty(i+"-CommandName");
     }
 
-    public static int getPort() {
-        return Integer.parseInt(PROPERTIES.getProperty("Port"));
+    public static String getIp(int i) {
+        return PROPERTIES.getProperty(i+"-IP");
+    }
+
+    public static int getPort(int i) {
+        return Integer.parseInt(PROPERTIES.getProperty(i+"-Port"));
     }
 }
