@@ -10,6 +10,7 @@ public class Transfer implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	public static final boolean debug = false;
+	public static final String version = "V3.0.0";
 
 	@Override
 	public void onInitialize() {
@@ -21,6 +22,7 @@ public class Transfer implements ModInitializer {
 				LOGGER.info(i+"-CommandName: " + Config.getCommandName(i));
 				LOGGER.info(i+"-IP: " + Config.getIp(i));
 				LOGGER.info(i+"-Port: " + Config.getPort(i));
+				i++;
 			}
 		}
 

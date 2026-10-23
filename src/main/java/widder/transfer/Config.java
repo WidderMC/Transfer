@@ -24,13 +24,33 @@ public class Config {
             }
 
             PROPERTIES.putIfAbsent("CommandsCounter","1");
+
+            PROPERTIES.keySet().removeIf(key -> {
+                String i = key.toString();
+                if (!Character.isDigit(i.charAt(0))) {
+                    return false;
+                }
+
+                int c = 0;
+                while (Character.isDigit(i.charAt(c))) {
+                    c++;
+                }
+                int n = Integer.parseInt(i.substring(0, c));
+
+                if (n > getCommandCounter()) {
+                    if (Transfer.debug) {
+                        Transfer.LOGGER.info("Removed Command: "+key);
+                    }
+                    return true;
+                }else {
+                    return false;
+                }
+            });
+
             for (int i=1; i < getCommandCounter()+1;) {
                 PROPERTIES.putIfAbsent(i+"-CommandName",i+"-server");
                 PROPERTIES.putIfAbsent(i+"-IP","");
                 PROPERTIES.putIfAbsent(i+"-Port","25565");
-                if (Transfer.debug) {
-                    Transfer.LOGGER.info("CommandCounter: " + i);
-                }
                 i++;
             }
 

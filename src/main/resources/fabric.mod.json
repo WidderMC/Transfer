@@ -3,7 +3,7 @@
 	"id": "transfer",
 	"version": "${version}",
 	"name": "transfer",
-	"description": "A Mod thats Add a Command thats can Connect you to a other Server",
+	"description": "A Mod that's Add a Command that's can Connect you to a other Server",
 	"authors": [
 		"Widder"
 	],
