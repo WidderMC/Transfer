@@ -6,8 +6,8 @@ Allows players to connect to another server using a custom command.
 
 ## Commands:
 
-- `transfer-plus version` <- Show the mod version
-- `transfer-plus reload` <- Reload the config file (may not work)
+- `/transfer-plus version` <- Show the mod version
+- `/transfer-plus reload` <- Reload the config file (may not work)
 
 ## Configuration:
 
